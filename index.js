@@ -104,5 +104,3 @@ export default class CsvToDb {
     });
   };
 }
-
-module.exports = CsvToDb;

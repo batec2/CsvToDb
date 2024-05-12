@@ -1,7 +1,8 @@
 {
   "name": "@batec2/csvtodb",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Takes a csv and inserts data into db table",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
