@@ -1,6 +1,6 @@
 {
-  "name": "csvtodb",
-  "version": "1.0.0",
+  "name": "@batec2/csvtodb",
+  "version": "1.0.1",
   "description": "Takes a csv and inserts data into db table",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/batec2/CsvToDb/issues"
   },
-  "homepage": "https://github.com/batec2/CsvToDb#readme"
+  "homepage": "https://github.com/batec2/CsvToDb#readme",
+  "dependencies": {
+    "csv-parse": "^5.5.5",
+    "pg-promise": "^11.6.0"
+  }
 }
