@@ -1,0 +1,19 @@
+{
+  "name": "csvtodb",
+  "version": "1.0.0",
+  "description": "Takes a csv and inserts data into db table",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batec2/CsvToDb.git"
+  },
+  "author": "Crush Bate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/batec2/CsvToDb/issues"
+  },
+  "homepage": "https://github.com/batec2/CsvToDb#readme"
+}
