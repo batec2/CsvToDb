@@ -9,19 +9,27 @@ export default class CsvToDb {
   counter = 0;
   table;
   pgp = pgPromise();
+  resolve = null;
   db;
-  columns;
 
   /**
-   *
-   * @param {*} config - Database config
+   * Must give either config object or pgp object, if both are given
+   * then it defaults to db object given
+   * @param {Object} [config] - Database config
+   * @param {Object} [db] - pgp object
+   * @throws {Error} needs either config object or pgp
    */
-  constructor(config) {
-    this.db = this.pgp(config);
-  }
-
-  get dataArray() {
-    return this.dataArray;
+  constructor(config, db) {
+    if (!config && !db) {
+      throw new Error(
+        "Object requires either a config object of pgp preconnected to db"
+      );
+    }
+    if (db) {
+      this.db = db;
+    } else {
+      this.db = this.pgp(config);
+    }
   }
 
   /**
@@ -45,11 +53,11 @@ export default class CsvToDb {
 
     return new Promise((resolve, reject) => {
       try {
+        this.resolve = resolve;
         createReadStream(fileName)
           .pipe(this.parser)
           .on("end", () => {
             console.log("CSV upload done");
-            resolve(this.dataArray);
           })
           .on("error", reject);
       } catch (e) {
@@ -100,7 +108,8 @@ export default class CsvToDb {
       this.counter = 0;
       this.totalCounter = 0;
       this.dataArray = [];
-      console.log("Parsing Done");
+      this.resolve();
+      console.log("Inserting Done");
     });
   };
 }
